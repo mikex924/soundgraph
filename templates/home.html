@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>soundgraph</title>
+        <meta name="description" content="Discover New Music With Soundgraph">
+
+        <style type="text/css">
+            #container {
+                max-width: 100%;
+                height: 695px;
+                margin: 0;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA=" crossorigin="anonymous"></script>
+        <script src="static/sigma.min.js"></script>
+        <script src="static/sigma.parsers.json.min.js"></script>
+        <script src="static/sigma.layout.forceAtlas2.min.js"></script>
+        <script src="static/sigma.layout.noverlap.min.js"></script>
+        <script src="static/sigma.plugins.animate.min.js"></script>
+        <script src="static/sigma.renderers.customEdgeShapes.min.js"></script>
+        <div id="container"></div>
+        <script>
+            sigma.parsers.json('test', {
+                container: 'container',
+                settings: {
+                    defaultNodeColor: '#ec5148',
+                    labelThreshold: 1,
+                    labelSizeRatio: 2,
+                    maxNodeSize: 30,
+                    defaultEdgeType: 'curve'
+                }
+            }, function(s) {
+                // Display the nodes on a circle:
+                s.graph.nodes().forEach(function(node, i, a) {
+                  node.x = Math.cos(Math.PI * 2 * i / a.length);
+                  node.y = Math.sin(Math.PI * 2 * i / a.length);
+                });
+
+                var config = {
+                    slowDown: 20,
+                    barnesHutOptimize: false
+                };
+
+                // Start the layout:
+                s.startForceAtlas2(config);
+            });
+        </script>
+    </body>
+</html>
