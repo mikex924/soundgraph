@@ -23,7 +23,6 @@
         <script src="static/sigma.layout.forceAtlas2.min.js"></script>
         <script src="static/sigma.layout.noverlap.min.js"></script>
         <script src="static/sigma.plugins.animate.min.js"></script>
-        <script src="static/sigma.renderers.customEdgeShapes.min.js"></script>
         <div id="container"></div>
         <script>
             sigma.parsers.json('test', {
@@ -32,8 +31,7 @@
                     defaultNodeColor: '#ec5148',
                     labelThreshold: 1,
                     labelSizeRatio: 2,
-                    maxNodeSize: 30,
-                    defaultEdgeType: 'curve'
+                    maxNodeSize: 30
                 }
             }, function(s) {
                 // Display the nodes on a circle:
