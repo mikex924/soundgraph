@@ -86,4 +86,6 @@ ENV/
 .spyderproject
 
 # Rope project settings
+
+*.swp
 .ropeproject
